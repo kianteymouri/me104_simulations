@@ -3,20 +3,23 @@
 clear; clc; close all;
 global k m l0
 
-%% 1. Parameters & Initial Conditions
-vx0 = 1; vy0 = 0.5; x0 = 1.5; % Added vy0 to ensure orbital motion
-k = 100; m = 1; l0 = 1.8;
+%%parameters and initial conditions
+vx0 = 1; 
+vy0 = 0.5; 
+x0 = 1.5; 
+k = 100; 
+m = 1; 
+l0 = 1.8;
 Tmax = 5; Tinc = 1/300;
 
-%% 2. The ODE Solver (This creates 'Usol')
-% This must happen BEFORE you reference 'Usol' in the next lines
+%%ode solver
 [t, Usol] = ode45(@springexample, [0:Tinc:Tmax], [x0, vx0, 0, vy0/x0]);
 
-%% 3. Visual Setup (Now 'Usol' exists!)
+%%visual setup
 max_r = max(Usol(:,1)) * 1.3; 
 figure('Color', 'w');
 
-%% 4. Animation Loop
+%%movie magic
 for i = 1:10:length(t)
     % Convert polar results back to Cartesian for plotting
     x = Usol(i,1) * cos(Usol(i,3));
@@ -26,7 +29,7 @@ for i = 1:10:length(t)
     hold on;
     plot([0, x], [0, y], 'k-', 'LineWidth', 2); % Spring
     
-    % Fixed the LineWidth syntax from your previous version
+    
     plot(Usol(1:i,1).*cos(Usol(1:i,3)), Usol(1:i,1).*sin(Usol(1:i,3)), ...
         'LineStyle', ':', 'LineWidth', 1.5, 'Color', 'b'); 
         
