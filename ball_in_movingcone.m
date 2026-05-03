@@ -1,3 +1,6 @@
+%% 3d animation (vibe coded)
+%%warning: prob will crash ur computer!!!!
+
 function conical_surface_movie
     % Parameters [cite: 292, 298]
     m = 1.0;        % Mass (kg)
