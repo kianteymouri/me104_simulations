@@ -1,4 +1,4 @@
-% ME 104 Lecture 6: Ball Dynamics Animation
+%Lecture 6
 clear; clc; close all;
 
 %%initial conditions
