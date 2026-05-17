@@ -1,4 +1,4 @@
-% ME 104 Lecture 7: Weight on Pulley with Constant Tension
+%Lecture 7
 clear; clc; close all;
 
 %%initial conditions
