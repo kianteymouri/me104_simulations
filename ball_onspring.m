@@ -1,4 +1,4 @@
-%%Lecture 8 example: code courtesy of Dr.Kamrin
+%%Lecture 8: code courtesy of Dr.Kamrin
 
 clear; clc; close all;
 global k m l0
