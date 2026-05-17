@@ -3,7 +3,7 @@ simulations in matlab of examples done in dynamics lecture (me104 taught by Dr.K
 
 all credit for problems and solutions go to Professor Kenneth Kamrin of the University of California Berkeley
 
-If you would like to view the individual problem statements and work behind each please reference this google drive folder:
+If you would like to view the individual problem statements and work behind each please reference this google drive folder: https://drive.google.com/drive/folders/1cdygXGMedmPQfG9CCUZp2grzHQEPUx6H?usp=sharing
 
 Problems can be found by locating the lecture number(first comment in matlab file at top) and locating respective problem in the folder.
 
