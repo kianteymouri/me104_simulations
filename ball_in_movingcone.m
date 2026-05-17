@@ -1,3 +1,5 @@
+%%Lecture 12
+
 %% 3d animation
 %%warning: prob will crash ur computer!!!!
 
