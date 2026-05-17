@@ -66,12 +66,12 @@ function newtons_cradle_simulation()
         
         % kinematics update
         for i = 1:num_balls
-            alpha = -(g / L) * sin(theta(i)); % Angular acceleration
-            omega(i) = omega(i) + alpha * dt;   % Update angular velocity
-            theta(i) = theta(i) + omega(i) * dt; % Update angular position
+            alpha = -(g / L) * sin(theta(i)); %ang acceleration
+            omega(i) = omega(i) + alpha * dt;   %updating angular velocity
+            theta(i) = theta(i) + omega(i) * dt; %updating angular position
         end
         
-        % 2. Discrete Binary Collision Resolution Loop [cite: 132]
+        %collision looop
         % We check multiple passes per frame to capture chained sequence reactions correctly
         collision_detected = true;
         while collision_detected
@@ -90,40 +90,40 @@ function newtons_cradle_simulation()
                     v_right = omega(i+1) * L;
                     
                     if v_left > v_right
-                        % Perfect elastic momentum transfer (e = 1) for identical masses: [cite: 107, 112]
-                        % Velocities are completely swapped [cite: 113, 114]
+                        %perfectly elastic
+                        %swap velocities
                         v_left_new  = v_right;
                         v_right_new = v_left;
                         
-                        % Translate linear velocities back into angular domain
+                        %translate linear velocities into angular
                         omega(i)   = v_left_new / L;
                         omega(i+1) = v_right_new / L;
                         
-                        % Prevent overlapping by separating them exactly to contact distance
+                        %preventing overlap
                         midpoint = (x_left + x_right) / 2;
                         theta(i)   = asin(((midpoint - R) - x_equilibrium(i)) / L);
                         theta(i+1) = asin(((midpoint + R) - x_equilibrium(i+1)) / L);
                         
-                        collision_detected = true; % Re-verify cascade interactions [cite: 132]
+                        collision_detected = true; 
                     end
                 end
             end
         end
         
-        % 3. Graphics Rendering Update
+        %movie magic
         for i = 1:num_balls
-            % Compute instantaneous positions relative to each anchor point
+            %computing positions 
             x_pos = x_equilibrium(i) + L * sin(theta(i));
             y_pos = -L * cos(theta(i));
             
-            % Update line coordinate endpoints (pendulum strings)
+            %updating line coordinates
             set(h_strings{i}, 'XData', [x_equilibrium(i), x_pos], 'YData', [0, y_pos]);
             
-            % Update marker positions (spherical ball objects)
+            %update marker positions
             set(h_balls{i}, 'XData', x_pos, 'YData', y_pos);
         end
         
         drawnow;
-        pause(0.001); % Slow execution down slightly for smooth viewing
+        pause(0.001); % slowing execution
     end
 end
