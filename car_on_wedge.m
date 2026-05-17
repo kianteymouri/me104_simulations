@@ -1,4 +1,4 @@
-% ME 104 Lecture 2: Car being pulled up a wedge
+%Lecture 2
 clear; clc; close all;
 
 %% 1. Parameters
